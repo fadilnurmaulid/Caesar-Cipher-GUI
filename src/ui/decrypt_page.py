@@ -1,7 +1,9 @@
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QSizePolicy, QWidget, QTextEdit
 
 class DecryptPage(QWidget):
+    back_requested = pyqtSignal()
+
     def __init__(self):
         super().__init__()
         self.setObjectName("decrypt_page")
@@ -24,6 +26,7 @@ class DecryptPage(QWidget):
         # hbox0 widget
         self.back_button = QPushButton("\u2B05")
         self.back_button.setObjectName("back_btn")
+        self.back_button.clicked.connect(self.back_requested.emit)
 
         title_label = QLabel("Caesar Cipher: Decrypt")
         title_label.setAlignment(Qt.AlignCenter)
@@ -56,6 +59,7 @@ class DecryptPage(QWidget):
         self.decrypt_copy_button = QPushButton("\U0001F4CB Copy")
         self.decrypt_copy_button.setDisabled(True)
         self.decrypt_copy_button.setObjectName("copy_btn")
+        self.decrypt_copy_button.setProperty("copied", False)
 
         # add widgets to layouts
         hbox0.addWidget(self.back_button)

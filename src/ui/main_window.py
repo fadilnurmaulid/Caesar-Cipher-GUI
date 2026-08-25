@@ -32,6 +32,12 @@ class MainWindow(QWidget):
         main_layout.addWidget(self.pages)
         self.setLayout(main_layout)
 
+        # Connect Signals to Slots
+        self.home_page.encrypt_requested.connect(self.show_encrypt)
+        self.home_page.decrypt_requested.connect(self.show_decrypt)
+        self.encrypt_page.back_requested.connect(self.show_home)
+        self.decrypt_page.back_requested.connect(self.show_home)
+
     def show_home(self):
         self.pages.setCurrentWidget(self.home_page)
 

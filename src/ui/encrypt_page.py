@@ -1,7 +1,9 @@
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QSizePolicy, QWidget, QTextEdit, QCheckBox
 
 class EncryptPage(QWidget):
+    back_requested = pyqtSignal()
+
     def __init__(self):
         super().__init__()
         self.setObjectName("encrypt_page")
@@ -24,6 +26,7 @@ class EncryptPage(QWidget):
         # hbox0 widget
         self.back_button = QPushButton("\u2B05")
         self.back_button.setObjectName("back_btn")
+        self.back_button.clicked.connect(self.back_requested.emit)
 
         title_label = QLabel("Caesar Cipher: Encrypt")
         title_label.setAlignment(Qt.AlignCenter)
@@ -63,6 +66,7 @@ class EncryptPage(QWidget):
         self.encrypt_copy_button = QPushButton("\U0001F4CB Copy")
         self.encrypt_copy_button.setDisabled(True)
         self.encrypt_copy_button.setObjectName("copy_btn")
+        self.encrypt_copy_button.setProperty("copied", False)
 
         # add widgets to layout
         hbox0.addWidget(self.back_button)

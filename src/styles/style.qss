@@ -4,6 +4,36 @@
      GLOBAL   
    ========== */
 
+QPushButton#copy_btn{
+    background-color: #f7f7f7;
+    border: 1px solid hsl(0, 0%, 75%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12pt;
+    color: #333333;
+}
+QPushButton:hover#copy_btn{
+    background-color: hsl(0, 0%, 88%);
+    border: 1px solid hsl(0, 0%, 65%);
+}
+QPushButton:pressed#copy_btn{
+    background-color: hsl(0, 0%, 80%);
+    border: 1px solid hsl(0, 0%, 60%);
+}
+QPushButton:disabled#copy_btn{
+    background-color: #e0e0e0;
+    color: #999999;
+    border: 1px solid hsl(0, 0%, 75%);
+}
+
+QPushButton#copy_btn[copied="true"]{
+    background-color: hsl(120, 60, 70);
+    color: white;
+    border: 1px solid hsl(120, 60, 60);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12pt;
+}
 
 
 /* ==========
