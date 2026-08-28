@@ -1,6 +1,8 @@
 from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QSizePolicy, QWidget, QTextEdit, QCheckBox
 
+from src.utils.clipboard import copy
+
 class EncryptPage(QWidget):
     back_requested = pyqtSignal()
 
@@ -67,6 +69,7 @@ class EncryptPage(QWidget):
         self.encrypt_copy_button.setDisabled(True)
         self.encrypt_copy_button.setObjectName("copy_btn")
         self.encrypt_copy_button.setProperty("copied", False)
+        self.encrypt_copy_button.clicked.connect(lambda: copy(self.encrypt_output, self.encrypt_copy_button))
 
         # add widgets to layout
         hbox0.addWidget(self.back_button)

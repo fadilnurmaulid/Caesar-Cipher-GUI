@@ -1,6 +1,8 @@
 from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QSizePolicy, QWidget, QTextEdit
 
+from src.utils.clipboard import copy
+
 class DecryptPage(QWidget):
     back_requested = pyqtSignal()
 
@@ -60,6 +62,7 @@ class DecryptPage(QWidget):
         self.decrypt_copy_button.setDisabled(True)
         self.decrypt_copy_button.setObjectName("copy_btn")
         self.decrypt_copy_button.setProperty("copied", False)
+        self.decrypt_copy_button.clicked.connect(lambda: copy(self.decrypt_output, self.decrypt_copy_button))
 
         # add widgets to layouts
         hbox0.addWidget(self.back_button)
