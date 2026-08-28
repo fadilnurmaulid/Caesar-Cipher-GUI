@@ -25,7 +25,6 @@ QPushButton:disabled#copy_btn{
     color: #999999;
     border: 1px solid hsl(0, 0%, 75%);
 }
-
 QPushButton#copy_btn[copied="true"]{
     background-color: hsl(120, 60, 70);
     color: white;
@@ -35,6 +34,51 @@ QPushButton#copy_btn[copied="true"]{
     font-size: 12pt;
 }
 
+#shift_widget QLabel{
+    font-size: 12pt;
+    color: #222;
+}
+#shift_widget QPushButton{
+    background-color: #f0f0f0;
+    border: 1px solid hsl(0, 0, 80);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12pt;
+    color: #333;            
+}
+#shift_widget QPushButton:hover{
+    background-color: hsl(210, 60, 92);
+    border: 1px solid hsl(210, 60, 60);               
+}
+#shift_widget QPushButton:pressed{
+    background-color: hsl(210, 60, 80);               
+}
+#shift_widget QPushButton:disabled{
+    background-color: #f0f0f0;
+    color: #999999;
+    border: 1px solid hsl(0, 0, 75);
+}
+#shift_widget QLabel:disabled {
+    color: #999999;
+}
+
+QCheckBox{
+    font-size: 12pt;
+    color: #202020;
+}
+QCheckBox::indicator{
+    width: 16px;
+    height: 16px;
+    border: 1px solid hsl(0, 0, 60);
+    border-radius: 3px;
+    background-color: #f5f5f5;               
+}
+QCheckBox::indicator:checked{
+    background-color: hsl(210, 100, 60);          
+}
+QCheckBox:hover{
+    color: hsl(210, 100, 40);               
+}
 
 /* ==========
     HOMEPAGE   
@@ -84,47 +128,6 @@ QPushButton#copy_btn[copied="true"]{
 #encrypt_page QPushButton:pressed#back_btn{
     background-color: hsl(0, 0, 80);               
 }
-#encrypt_page QPushButton#minus_btn, #encrypt_page QPushButton#plus_btn{
-    background-color: #f0f0f0;
-    border: 1px solid hsl(0, 0, 80);
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-size: 12pt;
-    color: #333;            
-}
-#encrypt_page QPushButton:hover#minus_btn, #encrypt_page QPushButton:hover#plus_btn{
-    background-color: hsl(210, 60, 92);
-    border: 1px solid hsl(210, 60, 60)               
-}
-#encrypt_page QPushButton:pressed#minus_btn, #encrypt_page QPushButton:pressed#plus_btn{
-    background-color: hsl(210, 60, 80);               
-}
-#encrypt_page QPushButton:disabled#minus_btn, #encrypt_page QPushButton:disabled#plus_btn{
-    background-color: #e0e0e0;
-    color: #999999;
-    border: 1px solid hsl(0, 0, 75);               
-}
-#encrypt_page QPushButton#encrypt_btn{
-    background-color: hsl(210, 100, 55);
-    border: 1px solid hsl(210, 100, 40);
-    border-radius: 6px;
-    padding: 6px 14px;
-    font-size: 13pt;
-    color: white;
-}
-#encrypt_page QPushButton:hover#encrypt_btn{
-    background-color: hsl(210, 100, 65);
-    border: 1px solid hsl(210, 100, 50);
-}
-#encrypt_page QPushButton:pressed#encrypt_btn{
-    background-color: hsl(210, 100, 45);
-    border: 1px solid hsl(210, 100, 35);
-}
-#encrypt_page QPushButton:disabled#encrypt_btn{
-    background-color: #cccccc;
-    border: 1px solid #aaaaaa;
-    color: #666666;               
-}
 #encrypt_page QPushButton#reset_btn{
     background-color: #f5f5f5;
     border: 1px solid hsl(0, 0, 75);
@@ -146,33 +149,12 @@ QPushButton#copy_btn[copied="true"]{
     color: #999999;
     border: 1px solid hsl(0, 0%, 75%);
 }
-#encrypt_page QLabel#shift_value_lbl, #encrypt_page QLabel#shift_lbl{
-    font-size: 12pt;
-    color: #222;
-}
 #encrypt_page QLabel#title_lbl{
     padding: 10px;
     border: 2px solid black;  
     border-radius: 5px;
     background-color: hsl(80, 190, 80);
     font-size: 30px;
-}
-#encrypt_page QCheckBox#random_cbx{
-    font-size: 12pt;
-    color: #202020;
-}
-#encrypt_page QCheckBox::indicator#random_cbx{
-    width: 16px;
-    height: 16px;
-    border: 1px solid hsl(0, 0, 60);
-    border-radius: 3px;
-    background-color: #f5f5f5;               
-}
-#encrypt_page QCheckBox::indicator:checked#random_cbx{
-    background-color: hsl(210, 100, 60);          
-}
-#encrypt_page QCheckBox:hover#random_cbx{
-    color: hsl(210, 100, 40);               
 }
 #encrypt_page QTextEdit#txt_input{
     background-color: #ffffff;
@@ -219,21 +201,6 @@ QPushButton#copy_btn[copied="true"]{
 #decrypt_page QPushButton:pressed#back_btn{
     background-color: hsl(0, 0, 80);               
 }
-#decrypt_page QPushButton#minus_btn, #decrypt_page QPushButton#plus_btn{
-    background-color: #f0f0f0;
-    border: 1px solid hsl(0, 0, 80);
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-size: 12pt;
-    color: #333;            
-}
-#decrypt_page QPushButton:hover#minus_btn, #decrypt_page QPushButton:hover#plus_btn{
-    background-color: hsl(210, 60, 92);
-    border: 1px solid hsl(210, 60, 60)               
-}
-#decrypt_page QPushButton:pressed#minus_btn, #decrypt_page QPushButton:pressed#plus_btn{
-    background-color: hsl(210, 60, 80);               
-}
 #decrypt_page QPushButton#reset_btn{
     background-color: #f5f5f5;
     border: 1px solid hsl(0, 0, 75);
@@ -254,10 +221,6 @@ QPushButton#copy_btn[copied="true"]{
     background-color: #e0e0e0;
     color: #999999;
     border: 1px solid hsl(0, 0%, 75%);
-}
-#decrypt_page QLabel#shift_value_lbl, #decrypt_page QLabel#shift_lbl{
-    font-size: 12pt;
-    color: #222;
 }
 #decrypt_page QLabel#title_lbl{
     padding: 10px;

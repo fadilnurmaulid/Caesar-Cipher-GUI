@@ -1,5 +1,6 @@
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QSizePolicy, QWidget, QTextEdit, QCheckBox
+from PyQt5.QtWidgets import (QVBoxLayout, QHBoxLayout, QLabel, QPushButton, 
+                             QSizePolicy, QWidget, QTextEdit, QCheckBox)
 
 from src.utils.clipboard import copy
 
@@ -28,7 +29,6 @@ class EncryptPage(QWidget):
         # hbox0 widget
         self.back_button = QPushButton("\u2B05")
         self.back_button.setObjectName("back_btn")
-        self.back_button.clicked.connect(self.back_requested.emit)
 
         title_label = QLabel("Caesar Cipher: Encrypt")
         title_label.setAlignment(Qt.AlignCenter)
@@ -36,17 +36,15 @@ class EncryptPage(QWidget):
         title_label.setObjectName("title_lbl")
 
         # hbox1 widget
+        self.shift_widget = QWidget()
+        self.shift_widget.setObjectName("shift_widget")
+        shift_layout = QHBoxLayout(self.shift_widget)
+        shift_layout.setContentsMargins(0, 0, 0, 0)
+    
         self.encrypt_shift_label = QLabel("Shift:")
-        self.encrypt_shift_label.setObjectName("shift_lbl")
-
         self.minus_button_encrypt = QPushButton("-")
-        self.minus_button_encrypt.setObjectName("minus_btn")
-
         self.shift_encrypt_value_label = QLabel("00")
-        self.shift_encrypt_value_label.setObjectName("shift_value_lbl")
-        
         self.plus_button_encrypt = QPushButton("+")
-        self.plus_button_encrypt.setObjectName("plus_btn")
 
         spacing_label = QLabel("\u00A9 2025 Fadil Nurmaulid")
         spacing_label.setStyleSheet("font-size: 8pt")
@@ -57,10 +55,7 @@ class EncryptPage(QWidget):
         self.random_checkbox.setObjectName("random_cbx")
 
         # hbox2 widget
-        self.encrypt_button = QPushButton("🔒 Encrypt")
-        self.encrypt_button.setDisabled(True)
-        self.encrypt_button.setObjectName("encrypt_btn")
-
+    
         self.encrypt_reset_button = QPushButton("\U0001F501 Reset")
         self.encrypt_reset_button.setDisabled(True)   
         self.encrypt_reset_button.setObjectName("reset_btn")
@@ -69,23 +64,40 @@ class EncryptPage(QWidget):
         self.encrypt_copy_button.setDisabled(True)
         self.encrypt_copy_button.setObjectName("copy_btn")
         self.encrypt_copy_button.setProperty("copied", False)
+
+        # handle wiring
+        self.back_button.clicked.connect(self.back_requested.emit)
+
+        #    self.plus_button_encrypt.clicked.connect(lambda: self.handle_shift_value_encrypt("plus"))
+        #    self.minus_button_encrypt.clicked.connect(lambda: self.handle_shift_value_encrypt("minus"))
+        #    self.encrypt_reset_button.clicked.connect(self.handle_reset_encrypt)
+
         self.encrypt_copy_button.clicked.connect(lambda: copy(self.encrypt_output, self.encrypt_copy_button))
+        #
+        #    self.plus_button_encrypt.pressed.connect(lambda: self.handle_shift_value_encrypt("plus", "hold"))
+        #    self.plus_button_encrypt.released.connect(lambda: self.encrypt_shift_timer.stop())
+        #    self.minus_button_encrypt.pressed.connect(lambda: self.handle_shift_value_encrypt("minus", "hold"))
+        #    self.minus_button_encrypt.released.connect(lambda: self.encrypt_shift_timer.stop())
+        #
+        #    self.random_checkbox.stateChanged.connect(self.handle_random_shift)     
+        #
+        #    
+        #    self.encrypt_input.textChanged.connect(self.handle_encrypt_textChanged)
 
         # add widgets to layout
         hbox0.addWidget(self.back_button)
         hbox0.addWidget(title_label)
         
-        hbox1.addWidget(self.encrypt_shift_label)
-        hbox1.addWidget(self.minus_button_encrypt)
-        hbox1.addWidget(self.shift_encrypt_value_label)
-        hbox1.addWidget(self.plus_button_encrypt)
+        shift_layout.addWidget(self.encrypt_shift_label)
+        shift_layout.addWidget(self.minus_button_encrypt)
+        shift_layout.addWidget(self.shift_encrypt_value_label)
+        shift_layout.addWidget(self.plus_button_encrypt)
+
+        hbox1.addWidget(self.shift_widget)
         hbox1.addWidget(spacing_label)
         hbox1.addWidget(self.random_checkbox)
 
-        hbox2.addWidget(self.encrypt_button)
-        hbox2.addSpacing(10)
         hbox2.addWidget(self.encrypt_reset_button)
-        hbox2.addSpacing(10)
         hbox2.addWidget(self.encrypt_copy_button)
         
         layout.addLayout(hbox0)

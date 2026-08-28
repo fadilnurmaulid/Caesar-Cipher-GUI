@@ -1,5 +1,6 @@
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QSizePolicy, QWidget, QTextEdit
+from PyQt5.QtWidgets import (QVBoxLayout, QHBoxLayout, QLabel, QPushButton, 
+                             QSizePolicy, QWidget, QTextEdit, QCheckBox)
 
 from src.utils.clipboard import copy
 
@@ -36,22 +37,24 @@ class DecryptPage(QWidget):
         title_label.setObjectName("title_lbl")
 
         # hbox1 widget
+        self.shift_widget = QWidget()
+        self.shift_widget.setObjectName("shift_widget")
+        shift_layout = QHBoxLayout(self.shift_widget)
+        shift_layout.setContentsMargins(0, 0, 0, 0)
+        self.shift_widget.setDisabled(False)
+
         self.decrypt_shift_label = QLabel("Shift:")
-        self.decrypt_shift_label.setObjectName("shift_lbl")
-
         self.minus_button_decrypt = QPushButton("-")
-        self.minus_button_decrypt.setObjectName("minus_btn")
-
         self.shift_decrypt_value_label = QLabel("00")
-        self.shift_decrypt_value_label.setObjectName("shift_value_lbl")
-
         self.plus_button_decrypt = QPushButton("+")
-        self.plus_button_decrypt.setObjectName("plus_btn")
 
         spacing_label = QLabel("\u00A9 2025 Fadil Nurmaulid")
         spacing_label.setStyleSheet("font-size: 8pt")
         spacing_label.setAlignment(Qt.AlignCenter)
         spacing_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+
+        self.manual_checkbox = QCheckBox("use manual shift")
+        self.manual_checkbox.setObjectName("manual_cbx")
 
         # hbox2 widget
         self.decrypt_reset_button = QPushButton("\U0001F501 Reset")
@@ -68,17 +71,17 @@ class DecryptPage(QWidget):
         hbox0.addWidget(self.back_button)
         hbox0.addWidget(title_label)
 
-        hbox1.addSpacing(10)
-        hbox1.addWidget(self.decrypt_shift_label)
-        hbox1.addWidget(self.minus_button_decrypt)
-        hbox1.addWidget(self.shift_decrypt_value_label)
-        hbox1.addWidget(self.plus_button_decrypt)
-        hbox1.addWidget(spacing_label)
+        shift_layout.addWidget(self.decrypt_shift_label)
+        shift_layout.addWidget(self.minus_button_decrypt)
+        shift_layout.addWidget(self.shift_decrypt_value_label)
+        shift_layout.addWidget(self.plus_button_decrypt)
 
-        hbox2.addSpacing(10)
+        hbox1.addWidget(self.shift_widget)
+        hbox1.addWidget(spacing_label)
+        hbox1.addWidget(self.manual_checkbox)
+
         hbox2.addWidget(self.decrypt_reset_button)
         hbox2.addWidget(self.decrypt_copy_button)
-        hbox2.addSpacing(10)
 
         layout.addLayout(hbox0)
         layout.addWidget(self.decrypt_input)
