@@ -1,9 +1,13 @@
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QStackedWidget, QVBoxLayout, QWidget
 
+from src.controllers.decrypt_controller import DecryptController
+from src.controllers.encrypt_controller import EncryptController
+from src.core.caesar_cipher import CaesarCipher
 from src.ui.home_page import HomePage
 from src.ui.encrypt_page import EncryptPage
 from src.ui.decrypt_page import DecryptPage
+from src.utils.resources import resource_path
 
 class MainWindow(QWidget):
     def __init__(self):
@@ -13,13 +17,17 @@ class MainWindow(QWidget):
         self.setMinimumSize(700, 400)
 
         # Custom Window Icon
-        icon_path = "assets/icons/Icon.ico"
-        self.setWindowIcon(QIcon(icon_path))
+        self.setWindowIcon(QIcon(resource_path("assets/icons/Icon.ico")))
 
         # Initiate Page Interface
         self.home_page = HomePage()
         self.encrypt_page = EncryptPage()
         self.decrypt_page = DecryptPage()
+
+        # Connect Pages to the Cipher Logic
+        cipher = CaesarCipher()
+        self.encrypt_controller = EncryptController(self.encrypt_page, cipher)
+        self.decrypt_controller = DecryptController(self.decrypt_page, cipher)
 
         # Creating QStackedWidget and Adding Pages
         self.pages = QStackedWidget()

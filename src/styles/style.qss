@@ -34,6 +34,10 @@ QPushButton#copy_btn[copied="true"]{
     font-size: 12pt;
 }
 
+#copyright_lbl{
+    font-size: 8pt;
+}
+
 #shift_widget QLabel{
     font-size: 12pt;
     color: #222;
@@ -110,84 +114,12 @@ QCheckBox:hover{
 }
 
 
-/* =============
-    ENCRYPTPAGE   
-   ============= */
+/* =======================
+    ENCRYPT & DECRYPT PAGES
+   ======================= */
 
 
-#encrypt_page QPushButton#back_btn{
-    padding: 10px;
-    border: 2px solid black;  
-    border-radius: 5px;
-    font-size: 30px;
-    background-color: gray;
-}
-#encrypt_page QPushButton:hover#back_btn{
-    background-color: hsl(0, 0, 88);
-}
-#encrypt_page QPushButton:pressed#back_btn{
-    background-color: hsl(0, 0, 80);               
-}
-#encrypt_page QPushButton#reset_btn{
-    background-color: #f5f5f5;
-    border: 1px solid hsl(0, 0, 75);
-    border-radius: 5px;
-    padding: 5px 12px;
-    font-size: 12pt;
-    color: #333333;    
-}
-#encrypt_page QPushButton:hover#reset_btn{
-    background-color: hsl(0, 0%, 88%);
-    border: 1px solid hsl(0, 0%, 65%);
-}
-#encrypt_page QPushButton:pressed#reset_btn{
-    background-color: hsl(0, 0%, 80%);
-    border: 1px solid hsl(0, 0%, 60%);
-}
-#encrypt_page QPushButton:disabled#reset_btn{
-    background-color: #e0e0e0;
-    color: #999999;
-    border: 1px solid hsl(0, 0%, 75%);
-}
-#encrypt_page QLabel#title_lbl{
-    padding: 10px;
-    border: 2px solid black;  
-    border-radius: 5px;
-    background-color: hsl(80, 190, 80);
-    font-size: 30px;
-}
-#encrypt_page QTextEdit#txt_input{
-    background-color: #ffffff;
-    border: 1px solid hsl(0, 0, 80);
-    border-radius: 6px;
-    padding: 6px;
-    font-size: 13pt;
-    color: #202020;
-}
-#encrypt_page QTextEdit:focus#txt_input{
-    border: 1.5px solid hsl(210, 100, 60);
-    background-color: #fcfcfc;               
-}
-#encrypt_page QTextEdit#txt_output{
-    background-color: #f9f9f9;
-    border: 1px solid hsl(0, 0, 80);
-    border-radius: 6px;
-    padding: 8px 10px;
-    font-size: 13pt;
-    color: #202020;
-}
-#encrypt_page QTextEdit:disabled#txt_output{
-    background-color: #f0f0f0;
-    color: #999999;
-    border: 1px solid hsl(0, 0, 75);               
-}
-
-
-/* =============
-    DECRYPTPAGE   
-   ============= */
-
-
+#encrypt_page QPushButton#back_btn,
 #decrypt_page QPushButton#back_btn{
     padding: 10px;
     border: 2px solid black;  
@@ -195,12 +127,15 @@ QCheckBox:hover{
     font-size: 30px;
     background-color: gray;
 }
+#encrypt_page QPushButton:hover#back_btn,
 #decrypt_page QPushButton:hover#back_btn{
     background-color: hsl(0, 0, 88);
 }
+#encrypt_page QPushButton:pressed#back_btn,
 #decrypt_page QPushButton:pressed#back_btn{
     background-color: hsl(0, 0, 80);               
 }
+#encrypt_page QPushButton#reset_btn,
 #decrypt_page QPushButton#reset_btn{
     background-color: #f5f5f5;
     border: 1px solid hsl(0, 0, 75);
@@ -209,19 +144,23 @@ QCheckBox:hover{
     font-size: 12pt;
     color: #333333;    
 }
+#encrypt_page QPushButton:hover#reset_btn,
 #decrypt_page QPushButton:hover#reset_btn{
     background-color: hsl(0, 0%, 88%);
     border: 1px solid hsl(0, 0%, 65%);
 }
+#encrypt_page QPushButton:pressed#reset_btn,
 #decrypt_page QPushButton:pressed#reset_btn{
     background-color: hsl(0, 0%, 80%);
     border: 1px solid hsl(0, 0%, 60%);
 }
+#encrypt_page QPushButton:disabled#reset_btn,
 #decrypt_page QPushButton:disabled#reset_btn{
     background-color: #e0e0e0;
     color: #999999;
     border: 1px solid hsl(0, 0%, 75%);
 }
+#encrypt_page QLabel#title_lbl,
 #decrypt_page QLabel#title_lbl{
     padding: 10px;
     border: 2px solid black;  
@@ -229,6 +168,7 @@ QCheckBox:hover{
     background-color: hsl(80, 190, 80);
     font-size: 30px;
 }
+#encrypt_page QTextEdit#txt_input,
 #decrypt_page QTextEdit#txt_input{
     background-color: #ffffff;
     border: 1px solid hsl(0, 0, 80);
@@ -237,10 +177,12 @@ QCheckBox:hover{
     font-size: 13pt;
     color: #202020;
 }
+#encrypt_page QTextEdit:focus#txt_input,
 #decrypt_page QTextEdit:focus#txt_input{
     border: 1.5px solid hsl(210, 100, 60);
     background-color: #fcfcfc;               
 }
+#encrypt_page QTextEdit#txt_output,
 #decrypt_page QTextEdit#txt_output{
     background-color: #f9f9f9;
     border: 1px solid hsl(0, 0, 80);
@@ -249,6 +191,7 @@ QCheckBox:hover{
     font-size: 13pt;
     color: #202020;
 }
+#encrypt_page QTextEdit:disabled#txt_output,
 #decrypt_page QTextEdit:disabled#txt_output{
     background-color: #f0f0f0;
     color: #999999;

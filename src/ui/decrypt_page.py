@@ -2,6 +2,7 @@ from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import (QVBoxLayout, QHBoxLayout, QLabel, QPushButton, 
                              QSizePolicy, QWidget, QTextEdit, QCheckBox)
 
+from src.ui.components import CopyrightLabel, ShiftWidget
 from src.utils.clipboard import copy
 
 class DecryptPage(QWidget):
@@ -29,7 +30,6 @@ class DecryptPage(QWidget):
         # hbox0 widget
         self.back_button = QPushButton("\u2B05")
         self.back_button.setObjectName("back_btn")
-        self.back_button.clicked.connect(self.back_requested.emit)
 
         title_label = QLabel("Caesar Cipher: Decrypt")
         title_label.setAlignment(Qt.AlignCenter)
@@ -37,21 +37,8 @@ class DecryptPage(QWidget):
         title_label.setObjectName("title_lbl")
 
         # hbox1 widget
-        self.shift_widget = QWidget()
-        self.shift_widget.setObjectName("shift_widget")
-        shift_layout = QHBoxLayout(self.shift_widget)
-        shift_layout.setContentsMargins(0, 0, 0, 0)
-        self.shift_widget.setDisabled(False)
-
-        self.decrypt_shift_label = QLabel("Shift:")
-        self.minus_button_decrypt = QPushButton("-")
-        self.shift_decrypt_value_label = QLabel("00")
-        self.plus_button_decrypt = QPushButton("+")
-
-        spacing_label = QLabel("\u00A9 2025 Fadil Nurmaulid")
-        spacing_label.setStyleSheet("font-size: 8pt")
-        spacing_label.setAlignment(Qt.AlignCenter)
-        spacing_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        self.shift_widget = ShiftWidget()
+        spacing_label = CopyrightLabel()
 
         self.manual_checkbox = QCheckBox("use manual shift")
         self.manual_checkbox.setObjectName("manual_cbx")
@@ -65,16 +52,14 @@ class DecryptPage(QWidget):
         self.decrypt_copy_button.setDisabled(True)
         self.decrypt_copy_button.setObjectName("copy_btn")
         self.decrypt_copy_button.setProperty("copied", False)
+
+        # handle wiring (cipher logic is wired in DecryptController)
+        self.back_button.clicked.connect(self.back_requested.emit)
         self.decrypt_copy_button.clicked.connect(lambda: copy(self.decrypt_output, self.decrypt_copy_button))
 
         # add widgets to layouts
         hbox0.addWidget(self.back_button)
         hbox0.addWidget(title_label)
-
-        shift_layout.addWidget(self.decrypt_shift_label)
-        shift_layout.addWidget(self.minus_button_decrypt)
-        shift_layout.addWidget(self.shift_decrypt_value_label)
-        shift_layout.addWidget(self.plus_button_decrypt)
 
         hbox1.addWidget(self.shift_widget)
         hbox1.addWidget(spacing_label)
